@@ -20,6 +20,18 @@ Use a webhook to make github send a post request to our local server so that our
 ### working video
 [github auto pull](https://www.youtube.com/watch?v=f88w0HjFxkQ)
 
+### How to use
+1. run `npm install` to install all node modules
+2. run `ssh -R 80:localhost:3000 serveo.net` to start a reverse ssh tunnel. This will make your localhost public. You will get a public url (lets call it URL1) note it.
+3. paste the absolute path to git repository folder and a random string to serve as a secret in config.js
+4. run `node app.js` to start the local webserver
+5. visit URL1/github in browser, if you see a message saying server in running then its all set up
+6. go to github repository page > settings > webhooks > add new webhook
+7. enter URL1/github as payload url
+8. select application/json as payload format
+9. put the secret that you saved in config.js
+10. It should now listen for push events and update your local repository ! (see the video if any step is not clear)
+
 ## Question 2. 
 
 ### solution 
